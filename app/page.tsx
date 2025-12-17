@@ -5,6 +5,9 @@ import WhyThisMatters from "./components/purpose";
 import HowItWorks from "./components/timeline";
 import LegalAidSection from "./components/legalaid";
 import LegalAidHero from "./components/legalaid";
+import AwarenessEducation from "./components/AwarenessEdu";
+import TrustTransparency from "./components/TrustTransparency";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +17,9 @@ export default function Home() {
     <WhyThisMatters/>
     <HowItWorks/>
     <LegalAidHero/>
+    <AwarenessEducation/>
+    <TrustTransparency/>
+    <Footer/>
    </main>
   );
 }

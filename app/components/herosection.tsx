@@ -5,12 +5,9 @@ const HeroSection = () => {
   return (
     <div>
       {/* NAVBAR */}
-      <nav className="w-full text-xl max-w-6xl mx-auto flex items-center justify-between py-5 px-8">
+      <nav className="w-full text-xl max-w-6xl mx-auto flex items-center justify-between py-2 px-6">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full border-2 border-black bg-white flex items-center justify-center">
-            <span className="text-black font-bold">O</span>
-          </div>
-          <span className="text-xl font-semibold text-[#000452]">Logo</span>
+          <img src="images/logo-only.png" alt="Saahas Logo" className="h-16 w-auto ml-2" />
         </div>
 
         <ul className="hidden md:flex gap-10 text-black font-medium">
