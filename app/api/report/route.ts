@@ -21,6 +21,7 @@ export async function POST(req: Request) {
       policeStation,
       email,
       pressure,
+      evidenceFiles,
     } = body;
 
     // Basic validation
@@ -46,6 +47,8 @@ export async function POST(req: Request) {
       policeStation,
       email,
       pressure,
+      evidenceFiles,
+      // evidenceFiles: body.evidenceFiles || [],
     });
 
     return NextResponse.json(

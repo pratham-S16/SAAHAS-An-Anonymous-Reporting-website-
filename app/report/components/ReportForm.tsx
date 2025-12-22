@@ -46,9 +46,29 @@ export function ReportForm() {
     }
   };
 
+  const uploadFiles = async () => {
+  if (uploadedFiles.length === 0) return [];
+
+  const formData = new FormData();
+  uploadedFiles.forEach(file => formData.append("files", file));
+
+  const res = await fetch("/api/upload", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error);
+
+  return data.files; // array of URLs
+};
+
+
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     if (!consent) return;
+
+    const evidenceUrls = await uploadFiles();
 
     const res = await fetch("/api/report", {
     method: "POST",
@@ -63,6 +83,7 @@ export function ReportForm() {
       policeStation,
       email,
       pressure,
+      evidenceFiles: evidenceUrls,
     }),
   });
 
@@ -333,7 +354,7 @@ export function ReportForm() {
                   disabled={!isFormValid}
                   className={`w-full py-4 px-6 rounded-lg transition-all ${
                     isFormValid
-                      ? 'bg-[#565EEB] hover:bg-[#4850d4] text-white shadow-md hover:shadow-lg'
+                      ? 'bg-[#565EEB] hover:bg-[#4850d4] text-white cursor-pointer shadow-md hover:shadow-lg'
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   }`}
                 >
