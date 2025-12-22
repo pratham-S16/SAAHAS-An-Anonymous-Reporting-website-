@@ -98,7 +98,7 @@ export default function HowItWorks() {
               <li key={s.id} className="flex flex-col items-center text-center md:text-left md:items-center">
                 {/* Step circle */}
                 <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-full bg-[#e4ffeb] flex items-center justify-center text-[#2aaf2c] shadow-sm">
+                  <div className="w-14 h-14 rounded-full bg-[#e4ffeb] flex items-center justify-center text-[#055806] shadow-sm">
                     {s.icon}
                   </div>
                 </div>

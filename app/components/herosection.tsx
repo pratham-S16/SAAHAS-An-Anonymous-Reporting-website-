@@ -1,11 +1,13 @@
 "use client";
+import Link from "next/link";
 import React from "react";
+
 
 const HeroSection = () => {
   return (
     <div>
       {/* NAVBAR */}
-      <nav className="w-full text-xl max-w-6xl mx-auto flex items-center justify-between py-2 px-6">
+      {/* <nav className="w-full text-xl max-w-6xl mx-auto flex items-center justify-between py-2 px-6">
         <div className="flex items-center gap-2">
           <img src="images/logo-only.png" alt="Saahas Logo" className="h-16 w-auto ml-2" />
         </div>
@@ -15,10 +17,10 @@ const HeroSection = () => {
           <li className="cursor-pointer hover:opacity-70">About</li>
           <li className="cursor-pointer hover:opacity-70">FAQ</li>
         </ul>
-      </nav>
+      </nav> */}
 
       {/* HERO CONTENT */}
-      <section className="w-full bg-[#565eeb] text-white py-20 px-6 rounded-b-3xl">
+      <section className="w-full bg-[#565eeb] text-white py-20 px-6 ">
       <div className="w-full x-auto text-center">
         <p className="uppercase tracking-[0.2em] text-[#000452] text-lg font-bold mb-4">
           SAFE • SILENT • SUPPORTIVE
@@ -33,11 +35,13 @@ const HeroSection = () => {
         </p>
 
         {/* BUTTONS */}
+        
         <div className="flex flex-wrap gap-4 justify-center">
-          <button className=" cursor-pointer px-6 py-3 bg-[#000452] text-white rounded-lg font-medium hover:opacity-80 transition">
+          <Link href="/report">
+          <button  className=" cursor-pointer px-6 py-3 bg-[#000452] text-white rounded-lg font-medium hover:opacity-80 transition">
             Report Anonymously
           </button>
-
+          </Link>
           <button className="cursor-pointer px-6 py-3 bg-white text-black border border-black rounded-lg font-medium hover:bg-gray-200 transition">
             Find Legal Help
           </button>

@@ -73,7 +73,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between text-sm">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Saahas.ights reserved.
+            © {new Date().getFullYear()} Saahas.rights reserved.
           </p>
 
           <p className="text-gray-400 mt-4 md:mt-0">

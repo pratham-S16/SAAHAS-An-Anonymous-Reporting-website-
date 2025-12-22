@@ -8,9 +8,13 @@ import LegalAidHero from "./components/legalaid";
 import AwarenessEducation from "./components/AwarenessEdu";
 import TrustTransparency from "./components/TrustTransparency";
 import Footer from "./components/Footer";
+import { Header } from "./report/components/Header";
 
 export default function Home() {
   return (
+    <div>
+
+    <Header/>
    <main>
     <HeroSection/>
     <QuickAccessCards/>
@@ -21,5 +25,6 @@ export default function Home() {
     <TrustTransparency/>
     <Footer/>
    </main>
+   </div>
   );
 }
