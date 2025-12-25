@@ -7,7 +7,7 @@ import { EmotionalSafetyFooter } from './components/EmotionalSafetyFooter'
 
 function report() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50/30 via-white to-indigo-50/30">
+    <div className="min-h-screen bg-slate-50">
         <Header/>
 
         <main className="w-full pb-0">

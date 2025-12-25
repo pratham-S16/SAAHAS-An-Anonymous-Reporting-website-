@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Upload, Info } from 'lucide-react';
 import { InfoModal } from './InfoModal';
+import { Toaster, toast} from "react-hot-toast"
 
 export function ReportForm() {
   const [category, setCategory] = useState('');
@@ -90,9 +91,11 @@ export function ReportForm() {
   const data = await res.json();
 
   if (res.ok) {
-    alert("Report submitted. Your tracking token: " + data.token);
+    toast.success("Report submitted. Your tracking token: " + data.token,{
+      duration:10000,
+    });
   } else {
-    alert(data.error || "Something went wrong");
+    toast.error(data.error || "Something went wrong");
   }
     
     // Mock submission
@@ -376,6 +379,7 @@ export function ReportForm() {
       </section>
 
       <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <Toaster/>
     </>
   );
 }
