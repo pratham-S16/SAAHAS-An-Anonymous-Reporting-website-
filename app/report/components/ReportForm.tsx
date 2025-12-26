@@ -18,6 +18,7 @@ export function ReportForm() {
   const [dragActive, setDragActive] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -68,7 +69,7 @@ export function ReportForm() {
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     if (!consent) return;
-
+    setIsSubmitting(true);
     const evidenceUrls = await uploadFiles();
 
     const res = await fetch("/api/report", {
@@ -113,6 +114,7 @@ export function ReportForm() {
     setPoliceStation('');
     setConsent(false);
     setUploadedFiles([]);
+    setIsSubmitting(false);
   };
 
   const isFormValid = category && description.trim().length > 0 && state && district && policeStation && consent;
@@ -354,9 +356,9 @@ export function ReportForm() {
               <div className="space-y-4 pt-2">
                 <button
                   type="submit"
-                  disabled={!isFormValid}
+                  disabled={!isFormValid || isSubmitting}
                   className={`w-full py-4 px-6 rounded-lg transition-all ${
-                    isFormValid
+                    isFormValid && !isSubmitting
                       ? 'bg-[#565EEB] hover:bg-[#4850d4] text-white cursor-pointer shadow-md hover:shadow-lg'
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   }`}
