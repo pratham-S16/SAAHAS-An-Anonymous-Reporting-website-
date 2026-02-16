@@ -175,6 +175,7 @@ export function ReportForm() {
                     <input
                       type="date"
                       id="incident-date"
+                      max={new Date().toISOString().split("T")[0]}
                       value={incidentDate}
                       onChange={(e) => setIncidentDate(e.target.value)}
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#565EEB]/20 focus:border-[#565EEB] transition-all"

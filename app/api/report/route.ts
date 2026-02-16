@@ -5,6 +5,8 @@ import { rateLimiter } from "@/lib/ratelimiter";
 import { getClientIP } from "@/lib/getClientIP";
 import { reportSchema } from "@/lib/validators/reportSchema";
 import { sanitizeText } from "@/lib/sanitize";
+import mongoose from "mongoose";
+import { cleanupFiles } from "@/lib/cleanupFiles";
 
 // helper to generate tracking token
 function generateToken() {
@@ -33,11 +35,12 @@ export async function POST(req: Request) {
           },
         }
       );
-    }
+    }     
+      //  IP rate limiting ends here ckecked work properly
 
     const body = await req.json();
 
-    // 1️⃣ Sanitize dangerous text fields
+    // Sanitize dangerous text fields
     const sanitizedBody = {
       ...body,
       description: sanitizeText(body.description),
@@ -47,7 +50,7 @@ export async function POST(req: Request) {
       policeStation: sanitizeText(body.policeStation),
     };
 
-    // 2️⃣ Validate shape & constraints
+    //  Validate shape & constraints
     const parsed = reportSchema.safeParse(sanitizedBody);
 
     if (!parsed.success) {
@@ -88,29 +91,43 @@ export async function POST(req: Request) {
     await connectDB();
 
     const token = generateToken();
+    const session = await mongoose.startSession();
+    try {
+      session.startTransaction();
 
-    const report = await Report.create({
-      token,
-      category,
-      description,
-      incidentDate,
-      incidentTime,
-      state,
-      district,
-      policeStation,
-      email,
-      pressure,
-      evidenceFiles,
-      // evidenceFiles: body.evidenceFiles || [],
-    });
+      const report = await Report.create([
+        {
+          token,
+          category,
+          description,
+          incidentDate,
+          incidentTime,
+          state,
+          district,
+          policeStation,
+          email,
+          pressure,
+          evidenceFiles,
+          // evidenceFiles: body.evidenceFiles || [],
+        },],
+        { session }
+      );
+      await session.commitTransaction();
+      session.endSession();
 
-    return NextResponse.json(
-      {
-        success: true,
-        token: report.token,
-      },
-      { status: 201 }
-    );
+      return NextResponse.json({ token }, { status: 201 });
+    } catch (error) {
+      await session.abortTransaction();
+      session.endSession();
+      await cleanupFiles(body.evidenceFiles || []);
+
+      console.error("Database connection failed :", error);
+
+      return NextResponse.json(
+        { error: "Failed to submit report" },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error(error);
     return NextResponse.json(

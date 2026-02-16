@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
-import { Shield } from 'lucide-react';
+import { PanelBottom, Shield } from 'lucide-react';
 import Link from 'next/link';
+
 
 export function Header() {
   return (
@@ -24,8 +25,8 @@ export function Header() {
               Home
             </a>
             <a 
-              href="#" 
-              className="text-gray-600 hover:text-[#565EEB] transition-colors"
+              href=""
+               className="text-gray-600 hover:text-[#565EEB] transition-colors"
             >
               Help
             </a>
