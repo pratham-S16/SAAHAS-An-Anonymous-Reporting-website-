@@ -10,7 +10,7 @@ function report() {
     <div className="min-h-screen bg-slate-50">
         <Header/>
 
-        <main className="w-full pb-0">
+        <main className="w-full  pb-0">
         <IntroSection/>
         <ReportForm/>
         <AnonymityAssurance/>

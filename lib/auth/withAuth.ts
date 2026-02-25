@@ -1,46 +1,22 @@
-import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "./jwt";
 
-export async function withAuth(
-  req: NextRequest,
-  allowedRoles=["ADMIN"]
-) {
-  const authHeader = req.headers.get("authorization");
+export function withAuth(handler: any, requiredRole: string) {
+  return async (req: Request) => {
+    try {
+      const authHeader = req.headers.get("authorization");
+      if (!authHeader)
+        return new Response("Unauthorized", { status: 401 });
 
-  if (!authHeader?.startsWith("Bearer ")) {
-    return {
-      error: NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      ),
-    };
-  }
+      const token = authHeader.split(" ")[1];
+      const decoded: any = verifyToken(token);
 
-  const token = authHeader.split(" ")[1];
+      if (decoded.role !== requiredRole) {
+        return new Response("Forbidden", { status: 403 });
+      }
 
-  try {
-    const decoded = verifyToken(token) as {
-      userId: string;
-      role: "ADMIN" | "LAWYER";
-    };
-
-    if (!allowedRoles.includes(decoded.role)) {
-      return {
-        error: NextResponse.json(
-          { error: "Forbidden" },
-          { status: 403 }
-        ),
-      };
+      return handler(req, decoded);
+    } catch {
+      return new Response("Invalid token", { status: 401 });
     }
-
-    return { user: decoded };
-
-  } catch {
-    return {
-      error: NextResponse.json(
-        { error: "Invalid token" },
-        { status: 401 }
-      ),
-    };
-  }
+  };
 }

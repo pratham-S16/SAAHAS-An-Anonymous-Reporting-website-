@@ -123,7 +123,7 @@ export function ReportForm() {
     <>
       <section className="w-full py-4 md:py-8 px-4">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg shadow-indigo-100/50 p-6 md:p-10">
+          <div className="bg-white rounded-2xl shadow-lg shadow-blue-900/40 p-6 md:p-10">
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Category Selection */}
               <div className="space-y-3">
