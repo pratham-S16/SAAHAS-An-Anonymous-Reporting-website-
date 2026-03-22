@@ -16,25 +16,41 @@ export function Header() {
             {/* <Shield className="w-7 h-7 md:w-8 md:h-8 text-[#565EEB]" strokeWidth={2} />
             <span className="text-xl md:text-2xl text-gray-900" style={{ fontWeight: 600 }}>Saahas</span> */}
           </div>
+          {/* <div>
+            Register as lawyer
+          </div> */}
           
           <nav className="hidden sm:flex items-center gap-6 md:gap-8">
-            <a 
-              href="#" 
-              className="text-gray-600 hover:text-[#565EEB] transition-colors"
+              {/* <Link 
+              href="/lawyer/register" 
+              className="text-gray-900 font-bold bg-amber-300 py-2 px-4 rounded-full hover:bg-amber-400 transition-colors"
+            >
+              Register as Lawyer
+            </Link> */}
+            <Link 
+              href="/" 
+              className="text-gray-600 font-bold hover:text-[#060c8f] transition-colors"
             >
               Home
-            </a>
-            <a 
+            </Link>
+            <Link 
               href=""
-               className="text-gray-600 hover:text-[#565EEB] transition-colors"
+               className="text-gray-600 font-bold hover:text-[#060c8f] transition-colors"
             >
               Help
-            </a>
+            </Link>
             <Link 
               href="/report/track-token" 
-              className="text-gray-600 hover:text-[#565EEB] transition-colors"
+              className="text-gray-600 font-bold hover:text-[#060c8f] transition-colors"
             >
               Track Report
+            </Link>
+            <Link 
+              href="/lawyer/register" 
+              className="text-gray-600 border-gray-600 border py-2 px-4 rounded-full hover:text-black 
+              hover:border-gray-900 transition-colors"
+            >
+              Register as Lawyer
             </Link>
           </nav>
 
