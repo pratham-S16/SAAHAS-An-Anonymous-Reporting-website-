@@ -47,7 +47,7 @@ export default function LawyerRegisterForm() {
       specialization: "",
       experience: "",
     });
-      toast.success("Registration successful. Awaiting admin verification.");
+      toast.success("Registration successful. Awaiting admin verification. You'll get update via email.",{duration: 5000});
       
     } catch (err: any) {
       toast.error(err.message || "Registration failed.");

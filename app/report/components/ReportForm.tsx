@@ -92,7 +92,7 @@ export function ReportForm() {
   const data = await res.json();
 
   if (res.ok) {
-    toast.success("Report submitted. Your tracking token: " + data.token,{
+    toast.success("Report submitted. Your tracking token: " + data.token + " Save this for future reference.",{
       duration:10000,
     });
   } else {

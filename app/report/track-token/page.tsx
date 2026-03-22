@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ShieldCheck } from "lucide-react";
+import { BackHome } from "@/app/components/BackHome";
 
 type ReportStatus = "submitted" | "under_review" | "forwarded";
 
@@ -27,7 +28,7 @@ export default function TrackReportPage() {
     setReport(null);
 
     try {
-      const res = await fetch(`/api/report/${token}`)
+      const res = await fetch(`/api/report/${token}`);
       const data = await res.json();
 
       if (!res.ok) {
@@ -52,16 +53,20 @@ export default function TrackReportPage() {
     <section className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 md:p-10">
         {/* Header */}
-        <div className="flex items-center gap-3 mb-6">
-          <ShieldCheck className="w-7 h-7 text-[#565EEB]" />
-          <h1 className="text-2xl font-semibold text-gray-900">
-            Track Your Report
-          </h1>
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex m-1 gap-3">
+            <ShieldCheck className="w-7 h-7 text-[#565EEB]" />
+            <h1 className="text-2xl  font-semibold text-gray-900">
+              Track Your Report
+            </h1>
+          </div>
+
+          <BackHome />
         </div>
 
         <p className="text-gray-600 mb-8">
-          Enter your anonymous tracking token to check the current status of your
-          report.
+          Enter your anonymous tracking token to check the current status of
+          your report.
         </p>
 
         {/* Token Input */}
@@ -79,14 +84,12 @@ export default function TrackReportPage() {
             />
           </div>
 
-          {error && (
-            <p className="text-sm text-red-600">{error}</p>
-          )}
+          {error && <p className="text-sm text-red-600">{error}</p>}
 
           <button
             onClick={handleTrack}
             disabled={loading}
-            className="w-full bg-[#565EEB] hover:bg-[#4a52d6] text-white py-3 rounded-lg transition disabled:opacity-60"
+            className="w-full cursor-pointer bg-[#565EEB] hover:bg-[#4a52d6] text-white py-3 rounded-lg transition disabled:opacity-60"
           >
             {loading ? "Checking..." : "Check Status"}
           </button>

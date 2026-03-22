@@ -9,7 +9,7 @@ export const BackHome = () => {
   };
 
   return (
-    <button onClick={handleHomeClick} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full cursor-pointer">
+    <button onClick={handleHomeClick} className="text-gray-600 border-gray-600 font-bold border py-2 px-4 rounded-full hover:text-black transition-colors cursor-pointer">
       Home 
     </button>
   )

@@ -42,9 +42,11 @@ const HeroSection = () => {
             Report Anonymously
           </button>
           </Link>
+          <Link href="/lawyer">
           <button className="cursor-pointer px-6 py-3 bg-white text-black border border-black rounded-lg font-medium hover:bg-gray-200 transition">
             Find Legal Help
           </button>
+          </Link>
         </div>
       </div>
     </section>

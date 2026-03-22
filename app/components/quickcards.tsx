@@ -27,7 +27,7 @@ const cards: Card[] = [
     title: "Legal & Counseling",
     description: "Find verified lawyers, counselors, and helplines. Get guidance on filing FIRs and rights.",
     ctaText: "Find Help",
-    ctaHref: "/legal-aid",
+    ctaHref: "/lawyer",
     icon: (
       <svg className="w-11 h-11 p-2 rounded-full bg-[#FFF4E6] text-[#FF8A4B]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
         <path d="M12 3v18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>

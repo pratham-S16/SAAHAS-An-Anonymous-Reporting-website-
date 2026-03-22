@@ -4,10 +4,10 @@ import LawyerRegisterForm from "./LawyerRegisterForm";
 
 export default function LawyerRegisterPage() {
   return (
-    <div className="min-h-screen flex flex-col m-20 md:flex-row bg-[#f4f3ff]">
+    <div className="min-h-screen flex flex-col  md:flex-row bg-[#f4f3ff]">
       
       {/* Left Side - Illustration Section */}
-      <div className="hidden md:flex w-1/2 bg-[#565eeb] text-white items-center justify-center p-12 relative overflow-hidden">
+      <div className="hidden md:flex w-1/2  bg-[#565eeb] text-white items-center justify-center p-12 relative overflow-hidden">
         <div className="max-w-md">
           <h2 className="text-3xl text-center font-semibold mb-4">
             Join Saahas as a Legal Partner
