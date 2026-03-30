@@ -47,7 +47,7 @@ export function Header() {
             </Link>
             <Link 
               href="/lawyer/register" 
-              className="text-gray-600 border-gray-600 border py-2 px-4 rounded-full hover:text-black 
+              className="text-gray-600 border-gray-600 border py-2 px-4 rounded-full hover:text-[#060c8f] 
               hover:border-gray-900 transition-colors"
             >
               Register as Lawyer
