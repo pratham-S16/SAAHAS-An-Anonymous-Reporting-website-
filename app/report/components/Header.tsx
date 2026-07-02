@@ -11,7 +11,7 @@ export function Header() {
         <div className="flex justify-between items-center h-16 md:h-20">
           <div className="flex items-center gap-2">
             <Link href="/" >
-            <img src="/images/logo-only.png" alt="Saahas Logo" className="h-12 w-auto " />
+            <img src="/images/Logo-only.png" alt="Saahas Logo" className="h-12 w-auto " />
             </Link>
             {/* <Shield className="w-7 h-7 md:w-8 md:h-8 text-[#565EEB]" strokeWidth={2} />
             <span className="text-xl md:text-2xl text-gray-900" style={{ fontWeight: 600 }}>Saahas</span> */}

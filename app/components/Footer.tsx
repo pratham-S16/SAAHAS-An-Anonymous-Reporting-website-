@@ -27,7 +27,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div>
             <a href="">
-              <img src="images/logo-bg.png" alt="Saahas Logo" className="h-20 ml-5 w-auto mb-4" />
+              <img src="images/Logo-bg.png" alt="Saahas Logo" className="h-20 ml-5 w-auto mb-4" />
             </a>
             <p className="text-sm leading-relaxed">
               A secure, anonymous platform built to help individuals report harassment,
